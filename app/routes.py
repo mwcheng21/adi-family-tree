@@ -1,4 +1,5 @@
 from math import fabs
+from platform import python_build
 import re
 from flask import render_template , flash , redirect , url_for , request, jsonify
 from app import app
@@ -79,7 +80,10 @@ def editTree(id):
         #if user can access this tree
         if current_user.is_authenticated :
             member = User.query.filter_by(uname = current_user.uname).first()
-            trees = member.treeid.strip('][').split(', ')
+            if (member.treeid.strip('][') == ""):
+                trees = []
+            else:
+                trees = [int(x) for x in member.treeid.strip('][').split(', ')]
             if (id in trees):
                 return render_template("tree-edit.html", id=id, jsonData=tree.treeJson)
         return render_template("tree-view-password.html", id=id, form = form)
@@ -99,7 +103,7 @@ def editTree(id):
 @app.route("/save_new_tree", methods = ['POST'])
 def saveNewTree():
     #make new tree
-    name = request.form["name"] if name != "" else "Default Tree"
+    name = request.form["name"] if request.form["name"] != "" else "Default Tree"
     editPwd = pwd.generate_password_hash(request.form["editPassword"]).decode('utf-8')
     viewPwd = pwd.generate_password_hash(request.form["viewPassword"]).decode('utf-8') if request.form["viewPassword"] != "" else ""
     element = Tree(treeJson=str(request.form["treeData"]), editPassword=editPwd, viewPassword=viewPwd, name=name)
@@ -110,7 +114,10 @@ def saveNewTree():
     #add to user if there is one
     if current_user.is_authenticated: 
         member = User.query.filter_by(uname = current_user.uname).first()
-        trees = member.treeid.strip('][').split(', ')
+        if (member.treeid.strip('][') == ""):
+            trees = []
+        else:
+            trees = [int(x) for x in member.treeid.strip('][').split(', ')]
         trees.append(id)
         db.session.query(User).filter(User.uname == current_user.uname).update({'treeid': str(trees)})
         db.session.commit()
@@ -138,31 +145,21 @@ def updateTree():
 @login_required
 def mytrees():
     member = User.query.filter_by(uname = current_user.uname).first()
-    trees = member.treeid.strip('][').split(', ')
+    if (member.treeid.strip('][') == ""):
+        trees = []
+    else:
+        trees = [int(x) for x in member.treeid.strip('][').split(', ')]
     res = []
+    print(trees)
     for treeid in trees:
         print(treeid)
         tree = Tree.query.filter_by(id = treeid).first()
         if tree:
-            res.append({"id": str(treeid), "time": tree.time})
-    return render_template("trees.html", info=res)
+            res.append({
+                "id": str(treeid),
+                "time": tree.time,
+                "name": tree.name,
+                "public": tree.viewPassword == ""
+            })
+    return render_template("trees.html", info=res, letter=current_user.uname[0].lower())
 
-
-
-# GET
-# login pageX
-# home page X
-# admin pageX
-# tree view page X
-# edit tree pageX
-# tree create X
-
-
-
-# POST/DEL 
-# login X
-# logout X
-# edit tree X
-# create account X
-# admin - give edit access 
-# admin - remove edit access

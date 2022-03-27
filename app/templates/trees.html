@@ -2,13 +2,42 @@
 
 {% block body %}
 
-<h1>Welcome {{ current_user.uname }}</h1>
+<div class="container-fluid"  style="color:white">
+  <div class="row" id="banner"></div>
+  <div class="row">
+    <div class="col-md-6 col-lg-3">
+      <i class="fa-solid fa-circle-{{letter}}"></i>
+      {{ current_user.uname }}
+    
+    </div>
+    <div class="col-md-6 col-lg-9">
 
-<div style="color:white"> 
-  <ul>
-    {% for tree in info %}
-      <li>Tree {{tree.id}} created on {{tree.time}}</li>
-    {% endfor %}
-  </ul>
+      {% for tree in info %}
+        <div class="row">
+          <div>
+            {% if tree.public %}
+              public
+            {% endif %}
+            public/private
+          </div>
+          <div>
+            {{tree.name}}
+          </div>
+          <div>
+            {{tree.time}}
+          </div>
+          <div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div> 
+    <ul>
+
+    </ul>
+  </div>
 </div>
 {% endblock %}
