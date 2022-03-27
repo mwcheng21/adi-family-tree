@@ -26,20 +26,25 @@ $('#submit').on('click', function(e) {
     e.preventDefault();
     publish()
 })
-
+var startingSize = -1
 $( document ).ready(function() {
     $("#saveButton").show()
+    startingSize = Object.entries(family.nodes).length;
+
 });
 
-var unsaved = true; // global variable
 
+
+var saved = false; // global variable
 $("#submit").click(function() {
-   unsaved = false;
+    startingSize = Object.entries(family.nodes).length;
+    saved = true;
 });
 
 
 const unloadPage = () => {
-  if (unsaved) {
+  if (!saved && Object.entries(family.nodes).length != startingSize) {
+    console.log(1)
     return "You have unsaved changes on this page.";
   }
 };

@@ -131,7 +131,7 @@ def editTree(id):
 def saveNewTree():
     #make new tree
     name = request.form["name"] if request.form["name"] != "" else "Default Tree"
-    editPwd = pwd.generate_password_hash(request.form["editPassword"]).decode('utf-8')
+    editPwd = pwd.generate_password_hash(request.form["editPassword"] if request.form["editPassword"] != "" else "z").decode('utf-8')
     viewPwd = pwd.generate_password_hash(request.form["viewPassword"]).decode('utf-8') if request.form["viewPassword"] != "" else ""
     element = Tree(treeJson=str(request.form["treeData"]), editPassword=editPwd, viewPassword=viewPwd, name=name)
     db.session.add(element)
