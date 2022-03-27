@@ -1,6 +1,7 @@
 from math import fabs
 from platform import python_build
 import re
+from threading import local
 from flask import render_template , flash , redirect , url_for , request, jsonify
 from app import app
 from app.forms import RegForm , LoginForm, LoginTreeForm
@@ -66,6 +67,25 @@ def viewTree(id):
         flash("This tree does not exist, please check your link." , "danger")
     return render_template("tree-view-password.html", id=id, form = form)
 
+#tree routes
+@app.route("/delete/<id>")
+@login_required
+def deleteTree(id):
+    member = User.query.filter_by(uname = current_user.uname).first()
+    if (member.treeid.strip('][') == ""):
+        trees = []
+    else:
+        trees = [int(x) for x in member.treeid.strip('][').split(', ')]
+    if (int(id) in trees):
+        trees = trees.remove(id)
+        db.session.query(User).filter(User.uname == current_user.uname).update({'treeid': str(trees)})
+        Tree.query.filter_by(id=id).delete()
+        db.session.commit()
+
+    flash("You cannot delete a tree you did not create." , "danger")
+    return mytrees()
+
+
 @app.route("/create")
 def createTree():
     return render_template("tree-create.html", jsonData="{}")
@@ -84,7 +104,7 @@ def editTree(id):
                 trees = []
             else:
                 trees = [int(x) for x in member.treeid.strip('][').split(', ')]
-            if (id in trees):
+            if (int(id) in trees):
                 return render_template("tree-edit.html", id=id, jsonData=tree.treeJson)
         return render_template("tree-view-password.html", id=id, form = form)
 
@@ -150,9 +170,7 @@ def mytrees():
     else:
         trees = [int(x) for x in member.treeid.strip('][').split(', ')]
     res = []
-    print(trees)
     for treeid in trees:
-        print(treeid)
         tree = Tree.query.filter_by(id = treeid).first()
         if tree:
             res.append({
@@ -161,5 +179,5 @@ def mytrees():
                 "name": tree.name,
                 "public": tree.viewPassword == ""
             })
-    return render_template("trees.html", info=res, letter=current_user.uname[0].lower())
+    return render_template("trees.html", info=res, letter=current_user.uname[0].lower(), email=member.email)
 

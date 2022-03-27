@@ -1,33 +1,49 @@
 {% extends 'index.html' %}
 
 {% block body %}
+<div class="row" id="banner" style="height: 200px; width: 150%; z-index: 1; background-color: blue;position: absolute;"></div>
 
-<div class="container-fluid"  style="color:white">
-  <div class="row" id="banner"></div>
-  <div class="row">
+<div class="container-fluid h-100" style="padding-top: 60px; background-color: #1e1e1e;">
+  <div class="row" style="padding-left: 100px;">
     <div class="col-md-6 col-lg-3">
-      <i class="fa-solid fa-circle-{{letter}}"></i>
-      {{ current_user.uname }}
-    
+      <div style="height:100px;">
+          <i class="fa-solid fa-5x fa-{{letter}} circle-icon" style="color:white;z-index: 3; position: relative"></i>
+      </div>
+      <div style="color: white;">
+        {{ current_user.uname }}
+      </div>
+      <div style="color: lightgray;">
+        <a href="mailto:{{ email }}" style="text-decoration: none; color: lightgray;"><i class="fa-solid fa-envelope"></i> {{ email }}</a>
+      </div>
     </div>
-    <div class="col-md-6 col-lg-9">
+
+    <div class="col-md-6 col-lg-9" style="padding-top:150px; color: white;">
 
       {% for tree in info %}
-        <div class="row">
-          <div>
+        <div class="row treeRows">
+          <div onclick="location.href='/view/{{tree.id}}';" class="col-2">
             {% if tree.public %}
-              public
+            <i class="fa-solid fa-globe tip"><span>Public. Anyone can see this tree</span></i>
+            {% else %}
+            <i class="fa-solid fa-lock tip"><span>Private. Only you and those with the password can see this</span></i>
             {% endif %}
-            public/private
           </div>
-          <div>
+          <div onclick="location.href='/view/{{tree.id}}';" class="col-4"> 
             {{tree.name}}
           </div>
-          <div>
+          <div onclick="location.href='/view/{{tree.id}}';" class="col-4">
             {{tree.time}}
           </div>
-          <div>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
+          <div class="col-2">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="/view/{{tree.id}}">View</a></li>
+                  <li><a class="dropdown-item" href="/edit/{{tree.id}}">Edit</a></li>
+                  <li><a class="dropdown-item" href="/delete/{{tree.id}}" style="color: red;">Delete</a></li>
+                </ul>
+              </div>
           </div>
         </div>
       {% endfor %}

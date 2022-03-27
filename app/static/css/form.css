@@ -7,3 +7,77 @@
     float: right;
     margin-right: 50px;
 }
+
+.circle-icon {
+    background: #ffc0c0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+}
+
+.tip:hover {
+    cursor: help;
+    position: relative
+}
+.tip span {
+    display: none;
+    color: black;
+    font-family: var(--bs-body-font-family);
+}
+.tip:hover span {
+    border-radius: 10%;
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background: url(../images/status-info.png) #f0f0f0 no-repeat 100% 5%;
+    left: 0px;
+    margin-left: 20px;
+    width: 250px;
+    position: absolute;
+    /* top: 10px; */
+    visibility: visible;
+}
+
+.treeRows{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.treeRows:hover{
+    background-color: rgb(68, 68, 68);
+    cursor: pointer;
+}
+.treeRows{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

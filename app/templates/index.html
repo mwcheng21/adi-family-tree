@@ -13,7 +13,10 @@
 		<!--font awesome-->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+	
 		<!--jquery-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -21,6 +24,9 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	
 		<!--my links-->
 		<link rel="stylesheet" href="/static/css/form.css">
 	
@@ -28,11 +34,14 @@
 		<script src="/static/js/familytree.js"></script>
 		<script src="/static/js/familyTreeTemplate.js"></script>
 
+		<script src="/static/js/scripts.js"></script>
+        <link href="/static/css/styles.css" rel="stylesheet" />
+
 	</head>
-	<body style="background: #1e1e1e; min-height: 100vh">
+	<body  class="d-flex flex-column h-100" style="min-height: 100vh">
 		{% include "includes/_navbar.html" %}
-		<center>
-			<div class="column is-4">
+		<center class="bg-dark">
+			<div class="bg-dark column is-4">
 				{% include "includes/_notifs.html" %}
 			</div>
 		</center>
@@ -41,5 +50,21 @@
 
 
 		{% endblock %}
+
+		<!-- Footer-->
+		<footer class="bg-dark py-4 mt-auto">
+			<div class="container px-5">
+				<div class="row align-items-center justify-content-between flex-column flex-sm-row">
+					<div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Family Trees Balkan 2022</div></div>
+					<div class="col-auto">
+						<a class="link-light small" href="#!">Privacy</a>
+						<span class="text-white mx-1">&middot;</span>
+						<a class="link-light small" href="#!">Terms</a>
+						<span class="text-white mx-1">&middot;</span>
+						<a class="link-light small" href="#!">Contact</a>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>

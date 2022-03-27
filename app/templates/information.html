@@ -2,20 +2,64 @@
 
 {% block body %}
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-12 col-md-6">
-			<h1>Family Tree User Interface for Non-developers</h1>
-			<p>Build a secure family tree without needing to code. No downloads, no coding, with security features and customizable??</p>
-			<button href="">Get Started</button>
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-5">
+			<div class="row gx-5 align-items-center justify-content-center">
+				<div class="col-lg-8 col-xl-7 col-xxl-6">
+					<div class="my-5 text-center text-xl-start">
+						<h1 class="display-5 fw-bolder text-white mb-2">Family Trees for Non-Developers</h1>
+						<p class="lead fw-normal text-white-50 mb-4">Quickly create, customize, and share family trees right away. No downloads, coding, and or accounts needed</p>
+						<div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+							<a class="btn btn-primary btn-lg px-4 me-sm-3" href="/create">Get Started</a>
+							<a class="btn btn-outline-light btn-lg px-4" href="#features">Learn More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+					<!-- <img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /> -->
+					<div id="tree" style="width: 600px; height: 400px;"></div>
+
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-12 col-md-6">
-			<div id="tree">
+	</header>
+
+	<!-- Features section-->
+	<section class="py-5" id="features">
+		<div class="container px-5 my-5">
+			<div class="row gx-5">
+				<div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to create.</h2></div>
+				<div class="col-lg-8">
+					<div class="row gx-5 row-cols-1 row-cols-md-2">
+						<div class="col mb-5 h-100">
+							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-speedometer"></i></div>
+							<h2 class="h5">Speed</h2>
+							<p class="mb-0">Get started creating right away. No need to create accounts or read through documentation.</p>
+						</div>
+						<div class="col mb-5 h-100">
+							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-file-lock"></i></div>
+							<h2 class="h5">Security</h2>
+							<p class="mb-0">Lock what you want behind passwords. Let the world see the rest.</p>
+						</div>
+						<div class="col mb-5 mb-md-0 h-100">
+							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+							<h2 class="h5">Flexibility</h2>
+							<p class="mb-0">Only include information you want, and add whatever fields you want listed for each person.</p>
+						</div>
+						<div class="col h-100">
+							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-globe"></i></div>
+							<h2 class="h5">Accessibility</h2>
+							<p class="mb-0">Access, create, or edit your trees from any device, whereever and whenever.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
+	</section>
 
+		
 
+	<script src="/static/js/information.js"></script>
 
-
-</div>
 {% endblock %}

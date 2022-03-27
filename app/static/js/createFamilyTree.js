@@ -30,3 +30,19 @@ $('#submit').on('click', function(e) {
 $( document ).ready(function() {
     $("#publishButton").show()
 });
+
+
+var unsaved = true; // global variable
+
+$("#submit").click(function() {
+   unsaved = false;
+});
+
+
+const unloadPage = () => {
+  if (unsaved) {
+    return "You have unsaved changes on this page.";
+  }
+};
+
+window.onbeforeunload = unloadPage;
