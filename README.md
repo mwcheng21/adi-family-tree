@@ -1,4 +1,5 @@
-# Balkan App For Non-Developers (BAND)
+# Family Tree for Non-developers
+DevFest '22 submission. See it [here](https://devpost.com/software/familytree)
 
 # Inspiration
 My family wanted to create a family tree and a quick google search yielded many solutions, with web applications like ancestry or familytreebuilder and libraries like BalkanJS, dTree, or GoJS. However, web applications provided no flexibility, and libraries provided no secure public interface. Therefore we attempt to develop BAND, using the BalkanJS App for non-developers, to address the shortcomings of the current solutions. We aim to address the following main 4 problems:   
