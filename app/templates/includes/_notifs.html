@@ -2,6 +2,6 @@
   {% if messages %}
     {% for category, message in messages %}
       <div class="column is-half notification is-{{ category }}" style="opacity: .9"><strong>{{ message }}</strong></div>
-    {% endfor %}
+      {% endfor %}
   {% endif %}
 {% endwith %}
