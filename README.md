@@ -10,7 +10,7 @@ My family wanted to create a family tree and a quick google search yielded many 
 # What it does
 A flexible, secure, accessible way to create and share family trees.  
 
-This platform uses the BalkanJS Family Tree componenets to build, share, and view custom family trees without needing to create an account. It accomplishes this through a password to view the tree, and a different password to edit. This allows viewing or editing either by searching for the tree name, or sharing a link. A quick start and minimal barrier to creation.
+This platform uses the BalkanJS Family Tree components to build, share, and view custom family trees without needing to create an account. It accomplishes this through a password to view the tree, and a different password to edit. This allows viewing or editing either by searching for the tree name, or sharing a link. A quick start and minimal barrier to creation.
 
 # How we built it
 ### Backend
