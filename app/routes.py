@@ -58,7 +58,14 @@ def viewTree(id):
     form = LoginTreeForm(request.form)
     tree = Tree.query.filter_by(id = id).first()
     if tree:
-        print(tree.viewPassword)
+        if (current_user.is_authenticated):
+            member = User.query.filter_by(uname = current_user.uname).first()
+            if (member.treeid.strip('][') == ""):
+                trees = []
+            else:
+                trees = [int(x) for x in member.treeid.strip('][').split(', ')]
+            if (int(id) in trees):
+                return render_template("tree-view.html", id=id, jsonData=tree.treeJson)
         if tree.viewPassword == "" or (request.method=="POST" and pwd.check_password_hash(tree.viewPassword , form.password.data)) :
             return render_template("tree-view.html", id=id, jsonData=tree.treeJson)
         elif request.method == "POST":
@@ -77,9 +84,9 @@ def deleteTree(id):
     else:
         trees = [int(x) for x in member.treeid.strip('][').split(', ')]
     if (int(id) in trees):
-        trees = trees.remove(id)
+        trees.remove(int(id))
         db.session.query(User).filter(User.uname == current_user.uname).update({'treeid': str(trees)})
-        Tree.query.filter_by(id=id).delete()
+        Tree.query.filter_by(id=int(id)).delete()
         db.session.commit()
 
     flash("You cannot delete a tree you did not create." , "danger")
