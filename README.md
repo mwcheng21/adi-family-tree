@@ -1,17 +1,15 @@
 # Family Tree
 
 Future work:
-password security, XSS attacks
-search public trees
-light mode dark mode
-improve customizability
-controls for trackpad users
-allow change passwords, usernames, emails
-send confirmation email automatically on signup
-delete trees
-upload profile pics
-upload images from computer
-check if changes before having dialog popup
+Upload images from computer
+Share button to easily share trees
+Search for public trees
+Controls for trackpad users
+Edit profile (change password, username, email, profile picture)
+Light mode Dark mode toggles
+Provide choices for what cards look like
+Send confirmation emails on signup and tree creation
+Password security, XSS attacks
 
 
 
