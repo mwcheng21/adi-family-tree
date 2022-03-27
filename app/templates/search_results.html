@@ -6,19 +6,11 @@
 <div class="container-fluid h-100" style="padding-top: 60px; background-color: #1e1e1e;">
   <div class="row" style="padding-left: 100px;">
     <div class="col-md-6 col-lg-3">
-      <div style="height:100px;">
-          <i class="fa-solid fa-5x fa-{{letter}} circle-icon" style="color:white;z-index: 3; position: relative"></i>
-      </div>
-      <div style="color: white;">
-        {{ current_user.uname }}
-      </div>
-      <div style="color: lightgray;">
-        <a href="mailto:{{ email }}" style="text-decoration: none; color: lightgray;"><i class="fa-solid fa-envelope"></i> {{ email }}</a>
-      </div>
+
     </div>
 
     <div class="col-md-6 col-lg-9" style="padding-top:150px; color: white;">
-
+      <h1>Public Search Results for {{ query }}</h1>
       {% for tree in info %}
         <div class="row treeRows">
           <div onclick="location.href='/view/{{tree.id}}';" class="col-2">
@@ -33,17 +25,6 @@
           </div>
           <div onclick="location.href='/view/{{tree.id}}';" class="col-4">
             {{tree.time}}
-          </div>
-          <div class="col-2">
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="/view/{{tree.id}}">View</a></li>
-                  <li><a class="dropdown-item" href="/edit/{{tree.id}}">Edit</a></li>
-                  <li><a class="dropdown-item" href="/delete/{{tree.id}}" style="color: red;">Delete</a></li>
-                </ul>
-              </div>
           </div>
         </div>
       {% endfor %}

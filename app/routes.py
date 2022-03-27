@@ -188,3 +188,18 @@ def mytrees():
             })
     return render_template("trees.html", info=res, letter=current_user.uname[0].lower(), email=member.email)
 
+@app.route("/search", methods = ['POST'])
+def search():
+    query = request.form["query"]
+    trees = Tree.query.filter(Tree.name.contains(query))
+    res = []
+
+    for tree in trees:
+        if (tree.viewPassword == ""):
+            res.append({
+                "id": str(tree.id),
+                "time": tree.time,
+                "name": tree.name,
+                "public": tree.viewPassword == ""
+            })
+    return render_template("search_results.html", info=res, query=query)
