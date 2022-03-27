@@ -97,6 +97,10 @@ def deleteTree(id):
 def createTree():
     return render_template("tree-create.html", jsonData="{}")
 
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
 @app.route("/edit/<id>", methods = ['GET' , 'POST'])
 def editTree(id):
     form = LoginTreeForm(request.form)
@@ -203,3 +207,4 @@ def search():
                 "public": tree.viewPassword == ""
             })
     return render_template("search_results.html", info=res, query=query)
+
