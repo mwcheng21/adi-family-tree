@@ -49,7 +49,8 @@ function load(canEdit=false){
             nodeBinding: {
                 field_0: 'name',
                 field_2: 'born',
-                img_0: 'photo'
+                img_0: 'photo',
+                img_0: 'img'
             },
             editForm: {
                 titleBinding: "name",
@@ -83,7 +84,8 @@ function load(canEdit=false){
             nodeBinding: {
                 field_0: 'name',
                 field_2: 'born',
-                img_0: 'photo'
+                img_0: 'photo',
+                img_0: 'img'
             },
             editForm: {
                 titleBinding: "name",
