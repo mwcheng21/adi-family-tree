@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Flask Auth Repo</title>
+		<!-- Bulma CSS -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+		<!--jquery-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+		<!--Bootstrap-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+		<!--my links-->
+		<link rel="stylesheet" href="/static/css/form.css">
+	
+		<!--BalkanFamilyTree-->
+		<script src="/static/js/familytree.js"></script>
+		<script src="/static/js/familyTreeTemplate.js"></script>
+
+	</head>
+	<body style="background: #1e1e1e; min-height: 100vh">
+		{% include "includes/_navbar.html" %}
+		<center>
+			<div class="column is-4">
+				{% include "includes/_notifs.html" %}
+			</div>
+		</center>
+		{% block body %}
+
+
+
+		{% endblock %}
+	</body>
+</html>

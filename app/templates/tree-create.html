@@ -1,0 +1,52 @@
+
+{% extends 'index.html' %}
+
+{% block body %}
+
+   
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="publishform">
+                <div class="mb-3 form-check">
+                    <input  onclick="$('#viewPwdContainer').toggle(); $('#viewPwd').val('')" type="checkbox" class="form-check-input" id="checkBox">
+                    <label class="form-check-label" for="exampleCheck1">Public site</label>
+                </div>
+                <div class="mb-3" id="viewPwdContainer">
+                  <label for="ViewPwd" class="form-label">View Password</label>
+                  <input type="password" class="form-control" id="viewPwd" aria-describedby="viewHelp">
+                  <div id="viewHelp" class="form-text">Allow others to view with this password</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="EditPwd" class="form-label">Edit Password<span style="color: red;">*</span></label>
+                  <input type="password" class="form-control" id="editPwd" required>
+                  <div id="emailHelp" class="form-text">Allow others to edit with this password</div>
+                </div>
+ 
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Publish</button>
+                </div>
+              </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<div id="tree"></div>
+
+<script>
+    var treeData=JSON.parse({{ jsonData|tojson }})
+</script>
+
+<script src="/static/js/createFamilyTree.js"></script>
+
+{% endblock %}

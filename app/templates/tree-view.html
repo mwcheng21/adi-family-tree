@@ -1,0 +1,16 @@
+
+{% extends 'index.html' %}
+
+{% block body %}
+<div id="tree"></div>
+
+<script>
+    var treeData=JSON.parse({{ jsonData|tojson }})
+    var id={{id}}
+</script>
+
+<script src="/static/js/viewFamilyTree.js"></script>
+
+
+
+{% endblock %}

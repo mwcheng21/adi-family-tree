@@ -1,0 +1,63 @@
+
+{% extends 'index.html' %}
+
+{% block body %}
+
+<div id="success" style="display: none;">
+  <h1>Tree Updated successfully</h1>
+  <p>Continue editing or view the tree <a id="viewLink">here</a></p>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button"  id="publish" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Publish
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Publish Tree</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="publishform">
+                <div class="mb-3 form-check">
+                    <input  onclick="$('#viewPwdContainer').toggle(); $('#viewPwd').val('')" type="checkbox" class="form-check-input" id="checkBox">
+                    <label class="form-check-label" for="exampleCheck1">Public site</label>
+                </div>
+                <div class="mb-3" id="viewPwdContainer">
+                  <label for="ViewPwd" class="form-label">Change View Password</label>
+                  <input type="password" class="form-control" id="viewPwd" aria-describedby="viewHelp">
+                  <div id="viewHelp" class="form-text">Allow others to view with this password</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="EditPwd" class="form-label">Change Edit Password</label>
+                  <input type="password" class="form-control" id="editPwd">
+                  <div id="emailHelp" class="form-text">Allow others to edit with this password</div>
+                </div>
+ 
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Publish</button>
+                </div>
+              </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<div id="tree"></div>
+
+<script>
+    var treeData=JSON.parse({{ jsonData|tojson }})
+    var id = {{id}}
+</script>
+
+<script src="/static/js/editFamilyTree.js"></script>
+
+{% endblock %}
