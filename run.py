@@ -5,7 +5,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 
-#to update sqllite db
+# # to update sqllite db
 # app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app/site.db'
 # db = SQLAlchemy(app)

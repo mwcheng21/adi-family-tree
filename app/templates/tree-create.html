@@ -14,6 +14,11 @@
         </div>
         <div class="modal-body">
             <form id="publishform">
+                <div class="mb-3" id="nameContainer">
+                    <label for="name" class="form-label">Tree Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Default Tree">
+                  </div>
+  
                 <div class="mb-3 form-check">
                     <input  onclick="$('#viewPwdContainer').toggle(); $('#viewPwd').val('')" type="checkbox" class="form-check-input" id="checkBox">
                     <label class="form-check-label" for="exampleCheck1">Public site</label>

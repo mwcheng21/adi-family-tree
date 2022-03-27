@@ -10,9 +10,7 @@ function publish(){
         },
         success: function(data)
         {
-          $("#viewLink").attr("href", `/view/${data.id}`)
-          $("#success").show()
-          $("#close").click()
+            window.location.replace(`/view/${data.id}`);
         }
     });
 }

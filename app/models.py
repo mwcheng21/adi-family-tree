@@ -26,6 +26,7 @@ class User(db.Model , UserMixin) :
 
 class Tree(db.Model):
     id = db.Column(db.Integer , primary_key = True)
+    name = db.Column(db.String(60) , nullable = False)
     time = db.Column(db.DateTime , default = datetime.now)
     treeJson = db.Column(db.Text(), nullable = False)
     viewPassword = db.Column(db.String(60) , nullable = False)

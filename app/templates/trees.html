@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<h1>Welcome {{ current_user.uname }}</h1>
+
+<div style="color:white"> 
+  <ul>
+    {% for tree in info %}
+      <li>Tree {{tree.id}} created on {{tree.time}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

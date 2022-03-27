@@ -5,6 +5,7 @@ function publish(){
         data: {
             "editPassword": $("#editPwd").val(),
             "viewPassword": $("#viewPwd").val(),
+            "name": $("#name").val(),
             "treeData": JSON.stringify(save())
         },
         success: function(data)
